@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
@@ -33,6 +34,9 @@ public class Board {
     @ManyToOne  //Many = Board, One = User
     @JoinColumn(name = "userId")
     private User user;  //DB는 오브젝트를 저장할 수 없기 때문에 FK사용, 자바는 오브젝트 저장할 수 있음
+
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)  //mappedBy 연관관계의 주인이 아님을 뜻함(FK가 아님) 그러므로 DB에 컬럼 만들지 않음
+    private List<Reply> replyList;
 
     @CreationTimestamp
     private Timestamp createdAt;

@@ -4,6 +4,7 @@ package com.example.blog.model;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -14,6 +15,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+//@DynamicInsert insert시에 null인 필드를 제외시켜줌
 public class User {
 
     @Id //Primary key
@@ -29,8 +31,9 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @ColumnDefault("'user'")
-    private String role;    //Enum을 쓰는게 좋음
+    //DB는 RoleType이라는 게 없기 때문에 어노테이션 붙어줘야함
+    @Enumerated(EnumType.STRING)
+    private RoleType role;    //Enum을 쓰는게 좋음
 
     @CreationTimestamp  //시간이 자동 입력됨
     private Timestamp createdAt;
