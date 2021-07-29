@@ -9,6 +9,6 @@ public class BoardController {
     @GetMapping("/")
     public String index() {
         //resources/templates/index.html
-        return "layout";
+        return "index";
     }
 }
