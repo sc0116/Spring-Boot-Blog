@@ -9,12 +9,24 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" th:if="${session.principal == null}">
                 <li class="nav-item">
                     <a class="nav-link" href="/blog/user/loginForm">로그인</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/blog/user/joinForm">회원가입</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav" th:unless="${session.principal == null}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/user/writeForm">글쓰기</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/user/userForm">회원정보</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/user/logout">로그아웃</a>
                 </li>
             </ul>
         </div>

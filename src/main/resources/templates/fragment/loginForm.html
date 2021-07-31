@@ -3,7 +3,7 @@
 
 <th:block th:fragment="loginFormFragment">
     <div class="container">
-        <form action="/action_page.php">
+        <form action="/user/login">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" class="form-control" placeholder="Enter username" id="username">
@@ -18,8 +18,10 @@
                     <input class="form-check-input" type="checkbox"> Remember me
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary">로그인</button>
         </form>
+        <button id="btn-login" type="submit" class="btn btn-primary">로그인</button>
     </div>
+
+    <script type="text/javascript" th:src="@{/js/user.js}"></script>
 </th:block>
 </html>
