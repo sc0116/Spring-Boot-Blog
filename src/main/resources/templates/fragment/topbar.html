@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav" sec:authorize-expr="isAuthenticated()">
+            <ul class="navbar-nav" sec:authorize-expr="!isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/loginForm">로그인</a>
                 </li>
@@ -18,7 +18,7 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav" sec:authorize-expr="!isAuthenticated()">
+            <ul class="navbar-nav" sec:authorize-expr="isAuthenticated()">
                 <li class="nav-item">
                     <a class="nav-link" href="/board/form">글쓰기</a>
                 </li>
