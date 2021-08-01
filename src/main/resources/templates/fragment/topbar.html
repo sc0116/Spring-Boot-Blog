@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block th:fragment="topbarFragment">
     <!-- Topbar -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <a class="navbar-brand" href="/blog">승철</a>
+        <a class="navbar-brand" href="/">승철</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav" th:if="${session.principal == null}">
+            <ul class="navbar-nav" sec:authorize-expr="isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog/user/loginForm">로그인</a>
+                    <a class="nav-link" href="/auth/loginForm">로그인</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog/user/joinForm">회원가입</a>
+                    <a class="nav-link" href="/auth/joinForm">회원가입</a>
                 </li>
             </ul>
 
-            <ul class="navbar-nav" th:unless="${session.principal == null}">
+            <ul class="navbar-nav" sec:authorize-expr="!isAuthenticated()">
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog/user/writeForm">글쓰기</a>
+                    <a class="nav-link" href="/board/form">글쓰기</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog/user/userForm">회원정보</a>
+                    <a class="nav-link" href="/user/form">회원정보</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog/user/logout">로그아웃</a>
+                    <a class="nav-link" href="/logout">로그아웃</a>
                 </li>
             </ul>
         </div>

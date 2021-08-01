@@ -1,7 +1,7 @@
 server:
   port: 6109
   servlet:
-    context-path: /blog
+    context-path: /
     encoding:
       charset: UTF-8
       enabled: true
@@ -41,3 +41,9 @@ spring:
   thymeleaf:
     cache: false
     prefix: file:src/main/resources/templates/
+
+  security:
+    user:
+      name: user1
+      password: 1
+      roles: USER
