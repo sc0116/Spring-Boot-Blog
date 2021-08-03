@@ -3,7 +3,7 @@
 
 <contentFragment th:fragment="contentFragment(boards)">
     <div class="container">
-        <div th:each="board : ${boards}">
+        <div th:each="board : ${boards.content}">
             <!-- card -->
             <div class="card m-2">
                 <div class="card-body">
@@ -13,6 +13,15 @@
             </div>
             <!-- -->
         </div>
+        <ul class="pagination justify-content-center">
+            <!-- th:if="${boards.number > 0}" -->
+            <li class="page-item ${boards.first} ? 'disabled'">
+                <a class="page-link" th:href="${boards.first} ? '#' : @{?(page=${boards.number-1})}">Previous</a>
+            </li>
+            <li class="page-item ${boards.last} ? 'disabled'">
+                <a class="page-link" th:href="${boards.last} ? '#' : @{?(page=${boards.number+1})}">Next</a>
+            </li>
+        </ul>
     </div>
 </contentFragment>
 </html>
