@@ -3,6 +3,9 @@ let index = {
         $("#btn-save").on("click", () => {  //this를 바인딩하기 위해서 () => {}사용, function() X
             this.save();
         });
+        $("#btn-delete").on("click", () => {
+            this.deleteById();
+        })
     },
     save: function () {
         let data = {
@@ -23,7 +26,20 @@ let index = {
             alert(JSON.stringify(err));
         });
     },
+    deleteById: function () {
+        var id = $("#id").text();
 
+        $.ajax({
+            type: "delete",
+            url: "/api/board/"+id,
+            dataType: "json"    //요청을 서버로해서 응답이 왔을 때 기본적으로 모든 것이 문자열(생긴게 json이라면) => js 오브젝트로 변경해줌
+        }).done(function (res) {
+            alert("삭제가 완료되었습니다.");
+            location.href="/";
+        }).fail(function (err) {
+            alert(JSON.stringify(err));
+        });
+    }
 }
 
 index.init();
