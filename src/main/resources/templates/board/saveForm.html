@@ -7,12 +7,12 @@
 <body id="page-top">
 <div id="wrapper">
     <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
+        <div id="saveContent">
             <!-- 상단바-->
             <th:block th:replace="fragment/topbar :: topbarFragment"></th:block>
 
             <!-- 본문-->
-            <th:block th:replace="fragment/saveForm :: saveFormFragment"></th:block>
+            <th:block th:replace="fragment/save :: saveFormFragment"></th:block>
         </div>
         <!-- 공통 하단-->
         <th:block th:replace="fragment/footer :: footerFragment"></th:block>

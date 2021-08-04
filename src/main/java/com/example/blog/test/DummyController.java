@@ -1,7 +1,9 @@
 package com.example.blog.test;
 
+import com.example.blog.model.Board;
 import com.example.blog.model.RoleType;
 import com.example.blog.model.User;
+import com.example.blog.repository.BoardRepository;
 import com.example.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -21,6 +23,9 @@ public class DummyController {
 
     @Autowired  //의존성 주입 (DI)
     private UserRepository userRepository;
+
+    @Autowired
+    private BoardRepository boardRepository;
 
     @DeleteMapping("/dummy/user/{id}")
     public String delete(@PathVariable int id) {
@@ -67,6 +72,15 @@ public class DummyController {
 
         List<User> users = pagingUser.getContent();
         return users;
+    }
+
+    //한 페이지당 2건의 데이터를 리턴받아 볼 예정
+    @GetMapping("/dummy/board")
+    public List<Board> pageBoardList(@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Board> pagingBoard = boardRepository.findAll(pageable);
+
+        List<Board> boards = pagingBoard.getContent();
+        return boards;
     }
 
     //{id} 주소로 파라미터를 전달 받을 수 있음

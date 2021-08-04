@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymemleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<th:block th:fragment="detailFormFragment(board)">
+    <div class="container">
+        <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+        <button id="btn-update" class="btn btn-warning">수정</button>
+        <button id="btn-delete" class="btn btn-danger">삭제</button>
+        <br/><br/>
+        <div class="form-group">
+            <h3 th:text="${board.title}"></h3>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <div th:utext="${board.content}"></div>
+        </div>
+        <hr/>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/board.js}"></script>
+</th:block>
+</html>

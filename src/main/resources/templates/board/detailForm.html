@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <!-- 공통 헤더-->
 <th:block th:replace="fragment/header :: headerFragment"></th:block>
@@ -7,12 +7,12 @@
 <body id="page-top">
 <div id="wrapper">
     <div id="content-wrapper" class="d-flex flex-column">
-        <div id="joinContent">
+        <div id="detailContent">
             <!-- 상단바-->
             <th:block th:replace="fragment/topbar :: topbarFragment"></th:block>
 
             <!-- 본문-->
-            <th:block th:replace="fragment/join :: joinFormFragment"></th:block>
+            <th:block th:replace="fragment/detail :: detailFormFragment(${board})"></th:block>
         </div>
         <!-- 공통 하단-->
         <th:block th:replace="fragment/footer :: footerFragment"></th:block>
