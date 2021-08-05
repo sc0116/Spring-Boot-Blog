@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymemleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<th:block th:fragment="saveFormFragment">
+<th:block th:fragment="updateFormFragment(board)">
     <div class="container">
         <form>
+            <input type="hidden" id="id" th:value="${board.id}">
             <div class="form-group">
-                <input type="text" name="title" class="form-control" placeholder="Enter title" id="title">
+                <input th:value="${board.title}" type="text" name="title" class="form-control" placeholder="Enter title" id="title">
             </div>
 
             <div class="form-group">
-                <textarea class="form-control summernote" name="content" rows="5" id="content"></textarea>
+                <textarea th:utext="${board.content}" class="form-control summernote" name="content" rows="5" id="content"></textarea>
             </div>
         </form>
-        <button id="btn-save" type="submit" class="btn btn-primary">글쓰기</button>
+        <button id="btn-update" type="submit" class="btn btn-primary">글수정</button>
     </div>
 
     <script>
