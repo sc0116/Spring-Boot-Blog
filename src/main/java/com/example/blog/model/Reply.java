@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -31,6 +32,7 @@ public class Reply {
     @JoinColumn(name = "userId")
     private User user;
 
-    @CreationTimestamp
-    private Timestamp createdAt;
+    //@CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 }

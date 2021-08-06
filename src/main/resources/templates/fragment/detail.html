@@ -4,8 +4,10 @@
 <th:block th:fragment="detailFormFragment(board)">
     <div class="container">
         <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+        <th:block th:if="${#authentication.principal.user.id == board.user.id}">
             <a th:href="@{'/board/' + ${board.id} + '/updateForm'}" class="btn btn-warning">수정</a>
             <button id="btn-delete" class="btn btn-danger">삭제</button>
+        </th:block>
         <br/><br/>
         <div>
             글 번호: <span id="id" ><i th:text="${board.id}"> </i></span>
