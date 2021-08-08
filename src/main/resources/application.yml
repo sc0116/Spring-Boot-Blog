@@ -41,3 +41,6 @@ spring:
   thymeleaf:
     cache: false
     prefix: file:src/main/resources/templates/
+
+shin:
+  key: shin1234
