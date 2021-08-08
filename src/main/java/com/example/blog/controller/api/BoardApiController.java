@@ -3,6 +3,7 @@ package com.example.blog.controller.api;
 import com.example.blog.config.auth.PrincipalDetail;
 import com.example.blog.dto.ResponseDto;
 import com.example.blog.model.Board;
+import com.example.blog.model.Reply;
 import com.example.blog.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,4 +33,10 @@ public class BoardApiController {
         boardService.글수정하기(id, board);
         return new ResponseDto<>(HttpStatus.OK.value(), 1);
      }
+
+    @PostMapping("/api/board/{boardId}/reply")
+    public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal) {
+        boardService.댓글쓰기(principal.getUser(), boardId, reply);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
 }
