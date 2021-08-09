@@ -40,7 +40,9 @@
                         <div th:text="${reply.content}">댓글 내용</div>
                         <div class="d-flex">
                             <div class="font-italic" th:text="|작성자: ${reply.user.username} &nbsp|">작성자: 김말똥 &nbsp</div>
+                            <th:block th:if="${#authentication.principal.user.id == reply.user.id}">
                             <button th:onclick="|index.replyDelete(${board.id}, ${reply.id})|" class="badge">삭제</button>
+                            </th:block>
                         </div>
                     </li>
                 </div>
